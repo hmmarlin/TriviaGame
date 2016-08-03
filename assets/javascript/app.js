@@ -60,10 +60,10 @@
      var counter;
 
      var stopwatch = {
-         time: 10,
+         time: 16,
          reset: function() {
              stopwatch.stop();
-             stopwatch.time = 10;
+             stopwatch.time = 16;
 
              //$('stopwatch').html('00:00')
              displayQuestion();
@@ -161,6 +161,7 @@
                  if (questions[i - 1].answer === selection) {
                      wins++;
                      stopwatch.reset();
+                     // $('#image-result').html('<img src=' + questions[i-1].img + '>')
                      $('#wins').html('Wins: ' + wins);
 
 
@@ -169,6 +170,7 @@
                  } else if (questions[i - 1].answer !== selection) {
                      losses++;
                      $('#loss').html('Losses: ' + losses);
+                      // $('#image-result').html('<img src=' + questions[i-1].img + '>')
                      stopwatch.reset();
 
                  }

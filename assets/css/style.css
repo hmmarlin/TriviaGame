@@ -37,7 +37,7 @@ h3 {
 	font-size:25px;
 }
 
-#a:hover, #b:hover, #c:hover {
+.btn:hover {
 	background-color: #CCFFCC;
 }
 
