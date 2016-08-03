@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Trivia</title>
+    <meta charset="UTF-8">
+    <title>Rapper Trivia</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Exo:400,700' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
-	<div id="header">
-	<h1>Rad Trivia</h1>
-	</div>
-  <div id="buttons">
-    <button id="start-button"><h2>Start Game</h2></button>
-    <p id="stopwatch"> &nbsp; </p>
-  </div>
-  <div id="question-area">
-  	<div id="question">
-
-  	</div>
-
-  	<div id="answer-a">
-  
-
-  	</div>
-
-  	<div id="answer-b">
-  	
-
-  	</div>
-  	<div id="answer-c">
-  
-  	
-  	</div>
-  	
-  	
-  </div>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <div id="header">
+        <h1>Say My Name Trivia</h1>
+        <h3>How well do you know your favorite rappers? Can you identify their real names?</h3>
+    </div>
+    <div id="buttons">
+        <button id="start-button">
+            <h2>Start Game</h2></button>
+        <p id="stopwatch"> &nbsp; </p>
+    </div>
+    <div id="row">
+        <div id="score">
+            <div id ="game-over" class="col-md-3">
+                
+            </div>
+            <div id="loss" class="col-md-3">
+                Losses: 0
+            </div>
+            <div id="wins" class="col-md-3">
+                Wins: 0
+            </div>
+            <div class="col-md-3">
+                <!-- empty div -->
+            </div>
+        </div>
+    </div>
+    <div id="answers">
+    </div>
+    <div id="row">
+        <div id="question-area" class="col-md-6">
+            <div id="question">
+            </div>
+            <div id="a">
+            </div>
+            <div id="b">
+            </div>
+            <div id="c">
+            </div>
+        </div>
+        <div id="image-result" class="col-md-6">
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
+
 </html>
