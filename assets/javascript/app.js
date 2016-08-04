@@ -1,5 +1,5 @@
  $(document).ready(function() {
-    $("#score").hide();
+     $("#score").hide();
 
 
      // create object of questions:
@@ -10,6 +10,7 @@
          'c': 'Shawn Carter',
          'answer': 'c',
          'img': 'http://media.giphy.com/media/xT8qBmLfZXBDPBP29O/giphy.gif'
+         // 'img': 'jay.gif'
      }, {
          'question': 'What is Eminem\'s real name?',
          'a': 'Marshall Mathers',
@@ -17,6 +18,7 @@
          'c': 'B. Rabbit',
          'answer': 'a',
          'img': 'http://media.giphy.com/media/12jcwKEZNh4GSQ/giphy.gif'
+         // 'img': 'eminem.gif'
 
      }, {
          'question': 'What is Drake\'s real name?',
@@ -25,6 +27,7 @@
          'c': 'Wayne Jenkins',
          'answer': 'a',
          'img': 'http://media.giphy.com/media/3o85xKWHrNvXqAvWMM/giphy.gif'
+         // 'img':'drake.gif'
      }, {
          'question': 'What is Nicki Minaj\'s real name?',
          'a': 'Nicolette Moore',
@@ -32,6 +35,7 @@
          'c': 'Nicole Majors',
          'answer': 'b',
          'img': 'http://media.giphy.com/media/yliFuJ98lafBe/giphy.gif'
+         // 'img': 'nikki.gif'
      }, {
          'question': 'What is Dr. Dre\'s real name?',
          'a': 'Andre Young',
@@ -39,19 +43,22 @@
          'c': 'Marcel Roberts',
          'answer': 'a',
          'img': 'http://media.giphy.com/media/oL3v6WK8vVUac/giphy.gif'
+         // 'img': 'dre.gif'
      }, {
          'question': 'What is Da Brat\'s real name?',
          'a': 'Ciara Wilson',
-         'b': 'Warren Greene',
+         'b': 'Tyra Smith',
          'c': 'Shawntae Harris',
          'answer': 'c',
          'img': 'http://media.giphy.com/media/BRHJlhQStZ01q/giphy.gif'
+         // 'img': 'brat.gif'
      }]
 
 
      // global variables
      var wins = 0;
      var losses = 0;
+     var notAnwered = 0;
      var selection;
      var i = 0;
      var imgVal;
@@ -85,7 +92,8 @@
              var converted = stopwatch.timeConverter(stopwatch.time);
              $('#stopwatch').html(converted);
              if (stopwatch.time == 0) {
-                 // alert("time's up!");
+                 alert("time's up!");
+                 notAnwered++
                  stopwatch.reset();
 
              }
@@ -108,16 +116,15 @@
      // create function to restart the game @ end on click of restart button
      function restartGame() {
          $('h3').show();
-         $('#loss').html('');
-         $('#wins').html('');
+         $('#score').hide();
+         $('#loss').html('Losses: 0');
+         $('#wins').html('Wins: 0');
          $('#answers').html('');
          $('#start-button').show();
          $("#game-over").html('')
-         console.log(questions.length);
          wins = 0;
          losses = 0;
          i = (i - questions.length);
-
 
      };
 
@@ -127,16 +134,23 @@
          $('#a').html('');
          $('#b').html('');
          $('#c').html('');
+         $('#image-result').html('');
+         $('#yups').html('');
          stopwatch.stop();
          $("#game-over").html('Game Over!');
          $('#answers').append('<p>' + '<img src=' + 'http://media2.popsugar-assets.com/files/thumbor/vwXZq0YrIvHoQz9Tq0I2gfN8MUY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/09/03/787/n/1922398/0dc7867952fbc808_beyonce-gif/i/Beyonce-Dancing-GIFs.gif' + '>' + '</p>')
          $('#answers').append('<button class=restart> Play Again</button>');
          $('.restart').on('click', restartGame);
-
-
-
      }
 
+     // function to display gif
+
+     function displayImage() {
+         imgVal = setInterval(imgVal, 5000);
+         $('#image-result').html('<img src='  + questions[i - 1].img + '>');
+         // $('#image-result').html('<img src=' + '../images/' + questions[i - 1].img + '>');
+
+     }
 
      // function to display all of my questions, in a for loop to loop thru the array of questions & options:
 
@@ -160,17 +174,16 @@
 
                  if (questions[i - 1].answer === selection) {
                      wins++;
-                     stopwatch.reset();
-                     // $('#image-result').html('<img src=' + questions[i-1].img + '>')
                      $('#wins').html('Wins: ' + wins);
-
-
-
+                     $('#yups').html('Correct!');
+                     displayImage();
+                     stopwatch.reset();
 
                  } else if (questions[i - 1].answer !== selection) {
                      losses++;
                      $('#loss').html('Losses: ' + losses);
-                      // $('#image-result').html('<img src=' + questions[i-1].img + '>')
+                     $('#yups').html('Wrong!');
+                     displayImage();
                      stopwatch.reset();
 
                  }
@@ -180,7 +193,6 @@
              i++;
          }
      }
-     //display wins & losses 
 
 
  });
